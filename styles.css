@@ -216,8 +216,8 @@ body {
 }
 
 .nav .container {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) auto minmax(0, 1fr);
     align-items: center;
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -253,6 +253,7 @@ body {
 .nav-links {
     display: flex;
     align-items: center;
+    justify-self: end;
     gap: var(--spacing-lg);
 }
 
@@ -283,6 +284,43 @@ body {
 .nav-links a:hover::after,
 .nav-links a.active::after {
     width: 100%;
+}
+
+.language-switcher {
+    display: inline-flex;
+    align-items: center;
+    justify-self: center;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    background: rgba(30, 41, 59, 0.75);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--shadow-sm);
+}
+
+.lang-btn {
+    min-width: 2.25rem;
+    height: 2rem;
+    padding: 0 0.65rem;
+    background: transparent;
+    border: 0;
+    border-radius: calc(var(--radius-sm) - 2px);
+    color: var(--text-secondary);
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 0.75rem;
+    font-weight: 700;
+    transition: all var(--transition-fast);
+}
+
+.lang-btn:hover {
+    color: var(--text-primary);
+}
+
+.lang-btn.active {
+    background: var(--accent-primary);
+    color: white;
+    box-shadow: 0 0 14px rgba(59, 130, 246, 0.25);
 }
 
 .nav-cta {
@@ -1503,7 +1541,21 @@ section {
 
 @media (max-width: 768px) {
     .nav .container {
+        display: flex;
+        justify-content: space-between;
         position: relative;
+    }
+
+    .language-switcher {
+        margin-left: auto;
+        margin-right: 0.75rem;
+    }
+
+    .lang-btn {
+        min-width: 2rem;
+        height: 1.8rem;
+        padding: 0 0.5rem;
+        font-size: 0.7rem;
     }
 
     .nav-links {
